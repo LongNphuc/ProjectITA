@@ -4,7 +4,7 @@ USE `ita301`;
 --
 -- Host: localhost    Database: ita301
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -51,7 +51,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,NULL,'113','v9V84qntaDDzx9nP3VI5Gw==',NULL,9,NULL,NULL,NULL,NULL,1,NULL),(5,'longnphe170623@fpt.edu.vn','','w+aSi9YHgBnXPlzjOOr5xg==','115748416819863290330',0,'Nguyen Phuc Long','Nguyen Phuc Long (K17 HL)',NULL,'https://lh3.googleusercontent.com/a/ACg8ocKXZBSTqdWDMt3A5QwH8Ro2Qm5wzsr56pXAvDJ5BNQ=s96-c',1,'2023-10-18 17:15:54'),(10,'duy240303220279@gmail.com',NULL,'5T+mSclHKJPiOkap3SkZaw==','107065846160973018545',1,'Long','Long Nguyen Phuc',1,'https://lh3.googleusercontent.com/a/ACg8ocLbtS8mTML0IxZ--qbd-plf9YdSBVJ8yGx9TW6vjeRJ=s96-c',1,'2023-10-28 12:12:32'),(11,NULL,'0326727212','IUvMBZbuBQkrkagmAWhvFw==',NULL,0,'thuyanh',NULL,NULL,NULL,1,'2023-10-31 22:38:22'),(12,NULL,'0867932085','w+aSi9YHgBnXPlzjOOr5xg==',NULL,0,'Long Nguyen',NULL,NULL,NULL,1,'2023-11-02 20:35:26');
+INSERT INTO `account` VALUES (1,NULL,'113','Admin123go',NULL,9,NULL,NULL,NULL,NULL,1,NULL),(5,'longnphe170623@fpt.edu.vn','','Jx9TK50MFQWmnn6ew+ZLMQ==','115748416819863290330',0,'Nguyen Phuc Long','Nguyen Phuc Long (K17 HL)',NULL,'https://lh3.googleusercontent.com/a/ACg8ocKXZBSTqdWDMt3A5QwH8Ro2Qm5wzsr56pXAvDJ5BNQ=s96-c',1,'2023-10-18 17:15:54'),(10,'duy240303220279@gmail.com',NULL,'5T+mSclHKJPiOkap3SkZaw==','107065846160973018545',1,'Long','Long Nguyen Phuc',1,'https://lh3.googleusercontent.com/a/ACg8ocLbtS8mTML0IxZ--qbd-plf9YdSBVJ8yGx9TW6vjeRJ=s96-c',1,'2023-10-28 12:12:32'),(11,NULL,'0326727212','IUvMBZbuBQkrkagmAWhvFw==',NULL,0,'thuyanh',NULL,NULL,NULL,1,'2023-10-31 22:38:22'),(12,NULL,'114','uZzOD7ola4gCsUEvYc17mw==',NULL,1,NULL,NULL,1,NULL,1,NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +75,7 @@ CREATE TABLE `class` (
   KEY `subjectId` (`subjectId`),
   CONSTRAINT `class_ibfk_1` FOREIGN KEY (`teacherId`) REFERENCES `account` (`accountId`),
   CONSTRAINT `class_ibfk_2` FOREIGN KEY (`subjectId`) REFERENCES `subject` (`subjectId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,8 +84,36 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,5,'DTA301',2,1,'2023-10-28 23:35:41',_binary '\0'),(4,5,'ITA301',1,1,'2023-11-04 20:49:54',_binary '');
+INSERT INTO `class` VALUES (1,5,'DTA301',2,1,'2023-10-28 23:35:41',_binary '\0'),(2,12,'ITA',1,1,'2023-11-06 08:23:15',_binary '\0');
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project`
+--
+
+DROP TABLE IF EXISTS `project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `project` (
+  `projectId` int NOT NULL AUTO_INCREMENT,
+  `projectName` varchar(255) COLLATE utf8mb3_bin NOT NULL,
+  `dateCreate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `classId` int DEFAULT NULL,
+  PRIMARY KEY (`projectId`),
+  KEY `classId` (`classId`),
+  CONSTRAINT `project_ibfk_1` FOREIGN KEY (`classId`) REFERENCES `class` (`classId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project`
+--
+
+LOCK TABLES `project` WRITE;
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` VALUES (2,'DTA','2023-11-04 02:46:58',1),(4,'iSP','2023-11-04 04:44:56',2),(5,'ISP','2023-11-04 05:06:26',1),(6,'ITA','2023-11-04 05:07:15',2),(7,'1','2023-11-06 02:17:28',2),(10,'D','2023-11-06 02:23:30',2);
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -123,7 +151,7 @@ CREATE TABLE `semester` (
   `semesterId` int NOT NULL AUTO_INCREMENT,
   `semesterName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`semesterId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +160,7 @@ CREATE TABLE `semester` (
 
 LOCK TABLES `semester` WRITE;
 /*!40000 ALTER TABLE `semester` DISABLE KEYS */;
-INSERT INTO `semester` VALUES (1,'Fall2023');
+INSERT INTO `semester` VALUES (1,'Fall2023'),(2,'Spring2024');
 /*!40000 ALTER TABLE `semester` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-04 21:50:28
+-- Dump completed on 2023-11-06  9:36:34

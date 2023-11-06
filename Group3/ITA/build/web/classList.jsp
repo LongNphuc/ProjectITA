@@ -81,7 +81,9 @@
                                                 <td>0</td>
                                                 <td>${c.dateCreate}</td>
                                                 <td><c:if test="${c.isActive eq 0}">InActive</c:if><c:if test="${c.isActive eq 1}">Active</c:if></td>
-                                                <td><a href="#">Detail</a></td>
+                                                <td><a href="#">Detail </a> / <a  href="./project?classId=${c.classId}">Project List</a></td>
+                                   
+
                                             </tr>
                                         </c:forEach>
                                     </tbody>
