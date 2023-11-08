@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="tab-pane fade show active" id="list-student" role="tabpanel" aria-labelledby="list-student-tab">
-    <h6 class="mb-4">ClassDetail</h6>
     <table class="table table-borderless">
-        <div class="d-flex flex-row">
-            <button class="btn btn-outline-success ms-3">
-                <i class="fa-regular fa-file-export"></i>
-                Export CSV
-            </button>
-        </div>
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light rounded h-100 p-4">
                 <form action="class" method="post">
@@ -39,18 +32,18 @@
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="activeStatus" value="1" <c:if test="${cl.isActive eq 1}"> checked</c:if>>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="activeStatus" value="1" <c:if test="${cl.isActive eq 1}"> checked</c:if>>
                                 <label class="form-check-label" for="activeStatus">
                                     Active
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="status" id="inactiveStatus" value="0"<c:if test="${cl.isActive eq 0}"> checked</c:if>>
-                                <label class="form-check-label" for="inactiveStatus">
-                                    Inactive
-                                </label>
-                            </div>       
+                            <label class="form-check-label" for="inactiveStatus">
+                                Inactive
+                            </label>
+                        </div>       
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>

@@ -69,7 +69,7 @@
                                             <th scope="col">Subject</th>
                                             <th scope="col">Number Of Sstudent</th>
                                             <th scope="col">Date Created</th>
-                                            <th scope="col"></th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,9 +81,7 @@
                                                 <td>0</td>
                                                 <td>${c.dateCreate}</td>
                                                 <td><c:if test="${c.isActive eq 0}">InActive</c:if><c:if test="${c.isActive eq 1}">Active</c:if></td>
-                                                <td><a href="#">Detail </a> / <a  href="./project?classId=${c.classId}">Project List</a></td>
-                                   
-
+                                                <td><a href="#">Detail </a> / <a  href="./project?classId=${c.classId}">Project List</a></td>                                 
                                             </tr>
                                         </c:forEach>
                                     </tbody>
